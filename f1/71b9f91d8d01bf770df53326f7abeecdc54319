@@ -1,0 +1,23 @@
+01_beginner/csv_analyzer/data/employees.csv
+  s_b37acbd52748c7::t_bca0c8a608739b 1-9
+01_beginner/csv_analyzer/data/students.csv
+  s_b37acbd52748c7::t_782a8af4af1fde 1-9
+01_beginner/csv_analyzer/data/sales.csv
+  s_b37acbd52748c7::t_d1e7e1be3dab84 1-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "f171b9f91d8d01bf770df53326f7abeecdc54319",
+  "prompts": {},
+  "sessions": {
+    "s_b37acbd52748c7": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_12b88a335ffeWxfMabJPI24d6B",
+        "model": "unknown"
+      },
+      "human_author": "mingzhou <mingzhou@tsign.cn>"
+    }
+  }
+}
