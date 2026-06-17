@@ -1,0 +1,20 @@
+01_beginner/password_generator/main.py
+  s_d6544c9dbcd1e2::t_a1117aa96f1e18 4-23,40,42-43,59,62-63,72-74,93,95,97
+  s_d6544c9dbcd1e2::t_05b143fdfb769f 60-61,76-77,79-80,82-88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "b8224a79789d4e5cd3253aaef6c68da4e98ecf4b",
+  "prompts": {},
+  "sessions": {
+    "s_d6544c9dbcd1e2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ed453-e3c3-77c3-9b62-89ad0169a152",
+        "model": "gpt-5.5"
+      },
+      "human_author": "mingzhou <mingzhou@tsign.cn>"
+    }
+  }
+}
