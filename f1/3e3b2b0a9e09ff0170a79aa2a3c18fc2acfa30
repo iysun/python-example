@@ -1,0 +1,19 @@
+01_beginner/file_renamer/main.py
+  s_8b7f3a2cddb40a::t_f37a20bd72546b 4-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "f13e3b2b0a9e09ff0170a79aa2a3c18fc2acfa30",
+  "prompts": {},
+  "sessions": {
+    "s_8b7f3a2cddb40a": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_12c6e7747ffelnxxj01id0jIZy",
+        "model": "unknown"
+      },
+      "human_author": "mingzhou <mingzhou@tsign.cn>"
+    }
+  }
+}
