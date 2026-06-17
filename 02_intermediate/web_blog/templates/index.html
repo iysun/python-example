@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta charset="UTF-8"><title>博客首页</title></head>
+<body>
+  <h1>文章列表</h1>
+  <!-- TODO: 遍历 posts，展示标题、作者、时间，链接到详情页 -->
+  {% for post in posts %}
+  <article>
+    <h2><a href="{{ url_for('post_detail', post_id=post.id) }}">{{ post.title }}</a></h2>
+    <small>{{ post.created_at }}</small>
+  </article>
+  {% else %}
+  <p>还没有文章。</p>
+  {% endfor %}
+  <a href="{{ url_for('new_post') }}">写新文章</a>
+</body>
+</html>

@@ -1,0 +1,2 @@
+playwright>=1.40.0
+# 安装后还需运行：playwright install chromium
