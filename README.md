@@ -54,11 +54,11 @@ python-exercises/
 | 练习点 | `dataclass`、`enum`、JSON 文件读写、列表操作 |
 | 完成标志 | 重启程序后数据不丢失 |
 
-- [ ] 实现 `Todo.to_dict()` / `from_dict()`
-- [ ] 实现 `load()` / `save()`
-- [ ] 实现 `add()` / `complete()` / `delete()`
-- [ ] 实现 `show_list()` 格式化输出
-- [ ] 扩展：支持截止日期和优先级
+- [x] 实现 `Todo.to_dict()` / `from_dict()`
+- [x] 实现 `load()` / `save()`
+- [x] 实现 `add()` / `complete()` / `delete()`
+- [x] 实现 `show_list()` 格式化输出
+- [x] 扩展：支持截止日期和优先级
 
 #### 3. 密码生成器 `01_beginner/password_generator/`
 | 项目 | 内容 |
