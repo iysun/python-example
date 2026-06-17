@@ -24,43 +24,90 @@ class Todo:
     id: int = 0
 
     def to_dict(self) -> dict:
-        # TODO: 返回可 JSON 序列化的字典
-        raise NotImplementedError
+        return {
+            "id": self.id,
+            "title": self.title,
+            "status": self.status.value,
+            "created_at": self.created_at,
+        }
 
     @classmethod
     def from_dict(cls, data: dict) -> "Todo":
-        # TODO: 从字典还原 Todo 对象
-        raise NotImplementedError
+        return cls(
+            title=data["title"],
+            status=Status(data["status"]),
+            id=data.get("id", 0),
+            created_at=data.get('created_at', datetime.now().strftime("%Y-%m-%d %H:%M")),
+        )
 
 
 def load() -> list[Todo]:
-    # TODO: 从 DATA_FILE 读取，文件不存在返回 []
-    raise NotImplementedError
+    if not DATA_FILE.exists():
+        return []
+    try:
+        data = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        print(f"警告: {DATA_FILE.name} 不是有效的 JSON，已按空列表处理")
+        return []
+
+    if not isinstance(data, list):
+        print(f"警告: {DATA_FILE.name} 格式错误，顶层应为列表")
+        return []
+
+    todos = []
+    for item in data:
+        if isinstance(item, dict):
+            todos.append(Todo.from_dict(item))
+    return todos
+
 
 
 def save(todos: list[Todo]) -> None:
-    # TODO: 序列化后写入 DATA_FILE
-    raise NotImplementedError
+    data = [ todo.to_dict() for todo in todos]
+    json_str = json.dumps(data)
+    DATA_FILE.write_text(json_str, encoding="utf-8")
 
 
-def add(title: str) -> Todo:
-    # TODO: 创建新 Todo（id 自增），追加保存
-    raise NotImplementedError
+def add(todos: list[Todo],title: str) -> Todo:
+    max_id = max([todo.id for todo in todos]) if todos else 0
+    new_id = max_id+1
+
+    new_todo = Todo(title=title, id=new_id)
+
+    todos.append(new_todo)
+    save(todos)
+
+    return new_todo
 
 
-def complete(todo_id: int) -> bool:
-    # TODO: 找到对应 id，将 status 改为 DONE，返回是否成功
-    raise NotImplementedError
+def complete(todos: list[Todo],todo_id: int) -> bool:
+    todos = load()
+    for todo in todos:
+        if todo.id == todo_id:
+            todo.status = Status.DONE
+            save(todos)
+            return True
+    return False
 
 
-def delete(todo_id: int) -> bool:
-    # TODO: 删除对应 id 的条目
-    raise NotImplementedError
+def delete(todos:list[Todo], todo_id: int) -> bool:
+    for i,todo in enumerate(todos):
+        if todo.id == todo_id:
+            del todos[i]
+            save(todos)
+            return True
+    return False
+    
+    
 
 
 def show_list(todos: list[Todo]) -> None:
-    # TODO: 用格式化字符串打印编号、状态、标题、创建时间
-    raise NotImplementedError
+    for todo in todos:
+        print(f"编号 : {todo.id}")
+        print(f"标题 : {todo.title}")
+        print(f"状态 : {todo.status.value}")
+        print(f"创建时间 : {todo.created_at}")
+        print("======")
 
 
 MENU = """
@@ -80,13 +127,24 @@ def main():
         elif choice == "2":
             title = input("内容：").strip()
             if title:
-                add(title)
+                add(todos, title)
         elif choice == "3":
             show_list(todos)
-            # TODO: 获取 id 输入，调用 complete()
+            id_str = input("id: ").strip()
+            try:
+                id = int(id_str) 
+            except:
+                print(f"警告: {id_str}, id 必须为数字")
+            complete(todos, id)
         elif choice == "4":
             show_list(todos)
-            # TODO: 获取 id 输入，调用 delete()
+            id_str = input("id: ").strip()
+            try:
+                id = int(id_str) 
+            except:
+                print(f"警告: {id_str}, id 必须为数字")
+
+            delete(todos, id)
         else:
             print("无效选项")
 
