@@ -1,0 +1,19 @@
+01_beginner/todo_cli/main.py
+  s_f336e33e465af6::t_415043c0e893bf 138-141,151-154
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "4d6fb75273e076c5743111850450eb4e0a0fb327",
+  "prompts": {},
+  "sessions": {
+    "s_f336e33e465af6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ed410-21b0-7e73-ab05-f55ec0d53f39",
+        "model": "gpt-5.5"
+      },
+      "human_author": "mingzhou <mingzhou@tsign.cn>"
+    }
+  }
+}
