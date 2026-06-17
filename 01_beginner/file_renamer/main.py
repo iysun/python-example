@@ -1,12 +1,23 @@
 """
 文件批量重命名工具
 练习点：os / pathlib、字符串处理、命令行参数（argparse）
+
+使用示例:
+    # 预览添加前缀 (不实际执行)
+    python main.py test_files --prefix "new_"
+    # 预览添加后缀
+    python main.py test_files --suffix "_backup"
+    # 实际执行重命名 (加 --run)
+    python main.py test_files --prefix "img_" --run
 """
+
 import argparse
 from pathlib import Path
 
 
-def rename_files(directory: str, prefix: str = "", suffix: str = "", dry_run: bool = True):
+def rename_files(
+    directory: str, prefix: str = "", suffix: str = "", dry_run: bool = True
+):
     """批量重命名目录下的文件。
 
     Args:
@@ -30,17 +41,19 @@ def rename_files(directory: str, prefix: str = "", suffix: str = "", dry_run: bo
         new_path = f.parent / new_name
 
         if dry_run:
-            # TODO: 打印 "预览: 旧名 -> 新名"
-            pass
+            print(f'{f.name} -> {new_name}')
         else:
-            # TODO: 调用 f.rename(new_path) 执行重命名
-            pass
+            f.rename(new_path)
 
 
 def build_parser() -> argparse.ArgumentParser:
-    # TODO: 用 argparse 定义 directory / --prefix / --suffix / --run 参数
     parser = argparse.ArgumentParser(description="批量重命名文件")
-    raise NotImplementedError
+    parser.add_argument("directory")
+    parser.add_argument("--prefix")
+    parser.add_argument("--suffix")
+    parser.add_argument("--run", action="store_true")
+
+    return parser
 
 
 def main():

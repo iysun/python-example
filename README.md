@@ -43,9 +43,9 @@ python-exercises/
 | 练习点 | `pathlib`、`argparse`、字符串操作 |
 | 完成标志 | `python main.py ./photos --prefix "2024_" --run` 能正确重命名 |
 
-- [ ] 实现 `build_parser()` 定义命令行参数
-- [ ] 实现 `rename_files()` 的预览和实际重命名逻辑
-- [ ] 扩展：支持只处理指定扩展名（`--ext .jpg`）
+- [x] 实现 `build_parser()` 定义命令行参数
+- [x] 实现 `rename_files()` 的预览和实际重命名逻辑
+- [x] 扩展：支持只处理指定扩展名（`--ext .jpg`）
 
 #### 2. 待办事项 CLI `01_beginner/todo_cli/`
 | 项目 | 内容 |

@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug file_renamer",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/01_beginner/file_renamer/main.py",
+      "args": [
+        "01_beginner/file_renamer/test_files",
+        "--prefix",
+        "new_"
+      ],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
