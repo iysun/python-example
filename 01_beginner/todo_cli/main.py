@@ -135,7 +135,10 @@ def main():
             except ValueError:
                 print(f"警告: {id_str}, id 必须为数字")
                 continue
-            complete(todos, todo_id)
+            if complete(todos, todo_id):
+                print(f"已完成待办 #{todo_id}")
+            else:
+                print(f"未找到 id 为 {todo_id} 的待办")
         elif choice == "4":
             show_list(todos)
             id_str = input("id: ").strip()
@@ -145,7 +148,10 @@ def main():
                 print(f"警告: {id_str}, id 必须为数字")
                 continue
 
-            delete(todos, todo_id)
+            if delete(todos, todo_id):
+                print(f"已删除待办 #{todo_id}")
+            else:
+                print(f"未找到 id 为 {todo_id} 的待办")
         else:
             print("无效选项")
 
