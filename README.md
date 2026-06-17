@@ -67,9 +67,9 @@ python-exercises/
 | 练习点 | `secrets`（比 `random` 更安全）、`string` 模块、`argparse` |
 | 完成标志 | `python main.py -l 20 -n 5` 输出 5 个不同的 20 位密码 |
 
-- [ ] 实现 `generate_password()` 确保每类字符至少各有一个
-- [ ] 实现 `check_strength()` 评估强度
-- [ ] 扩展：支持排除易混淆字符（`0Ol1I`）
+- [x] 实现 `generate_password()` 确保每类字符至少各有一个
+- [x] 实现 `check_strength()` 评估强度
+- [x] 扩展：支持排除易混淆字符（`0Ol1I`）
 
 #### 4. CSV 数据分析 `01_beginner/csv_analyzer/`
 | 项目 | 内容 |
