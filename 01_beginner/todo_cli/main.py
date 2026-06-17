@@ -81,7 +81,6 @@ def add(todos: list[Todo],title: str) -> Todo:
 
 
 def complete(todos: list[Todo],todo_id: int) -> bool:
-    todos = load()
     for todo in todos:
         if todo.id == todo_id:
             todo.status = Status.DONE
@@ -132,19 +131,21 @@ def main():
             show_list(todos)
             id_str = input("id: ").strip()
             try:
-                id = int(id_str) 
-            except:
+                todo_id = int(id_str)
+            except ValueError:
                 print(f"警告: {id_str}, id 必须为数字")
-            complete(todos, id)
+                continue
+            complete(todos, todo_id)
         elif choice == "4":
             show_list(todos)
             id_str = input("id: ").strip()
             try:
-                id = int(id_str) 
-            except:
+                todo_id = int(id_str)
+            except ValueError:
                 print(f"警告: {id_str}, id 必须为数字")
+                continue
 
-            delete(todos, id)
+            delete(todos, todo_id)
         else:
             print("无效选项")
 
