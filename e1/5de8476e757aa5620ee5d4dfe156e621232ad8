@@ -1,0 +1,31 @@
+01_beginner/csv_analyzer/main.py
+  s_aa8afd73b7c510::t_507303c82cc044 45
+  s_aa8afd73b7c510::t_9ec0642d69891c 26-40
+  s_9043345c367926::t_35206c93ff0691 77
+  s_aa8afd73b7c510::t_c6eb0bba9d94c0 50-56
+  s_aa8afd73b7c510::t_dd2cd5acf27778 83,92-96,101-102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "e15de8476e757aa5620ee5d4dfe156e621232ad8",
+  "prompts": {},
+  "sessions": {
+    "s_9043345c367926": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019eee7d-f8b6-76a0-90a6-c60ddd5094b8",
+        "model": "gpt-5.5"
+      },
+      "human_author": "mingzhou <mingzhou@tsign.cn>"
+    },
+    "s_aa8afd73b7c510": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_111622b1effe2oDCHRLybHAjLN",
+        "model": "unknown"
+      },
+      "human_author": "mingzhou <mingzhou@tsign.cn>"
+    }
+  }
+}
