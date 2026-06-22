@@ -82,11 +82,11 @@ python-exercises/
 | 练习点   | `csv.DictReader`、`collections`、数值统计 |
 | 完成标志 | 能对 Kaggle 下载的真实数据集完成分析      |
 
-- [ ] 实现 `load_csv()` 读取文件
-- [ ] 实现 `summary()` 数值统计
-- [ ] 实现 `frequency()` 频次统计
-- [ ] 实现 `group_sum()` 分组汇总
-- [ ] 实现 `main()` 的交互选择逻辑
+- [x] 实现 `load_csv()` 读取文件
+- [x] 实现 `summary()` 数值统计
+- [x] 实现 `frequency()` 频次统计
+- [x] 实现 `group_sum()` 分组汇总
+- [x] 实现 `main()` 的交互选择逻辑
 
 #### 5. 网页爬虫 `01_beginner/web_scraper/`
 
