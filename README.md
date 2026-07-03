@@ -96,10 +96,10 @@ python-exercises/
 | 练习点   | `requests`、`BeautifulSoup`、`csv`、分页处理 |
 | 完成标志 | 爬取 3 页，输出包含文字/作者/标签的 CSV 文件 |
 
-- [ ] 实现 `fetch_page()` 请求并解析页面
-- [ ] 实现 `parse_quotes()` 提取名言数据
-- [ ] 实现 `get_next_url()` 获取下一页链接
-- [ ] 实现 `save_to_csv()` 写出结果
+- [x] 实现 `fetch_page()` 请求并解析页面
+- [x] 实现 `parse_quotes()` 提取名言数据
+- [x] 实现 `get_next_url()` 获取下一页链接
+- [x] 实现 `save_to_csv()` 写出结果
 
 ---
 
