@@ -115,11 +115,11 @@ python-exercises/
 | 练习点   | Flask 路由、Jinja2 模板、SQLite、Session |
 | 完成标志 | 浏览器能注册/登录/发文/查看文章          |
 
-- [ ] 实现 `index()` 查询并展示文章列表
-- [ ] 实现 `post_detail()` 文章详情
-- [ ] 实现 `new_post()` 表单处理和数据库插入
-- [ ] 实现 `login()` / `logout()` 会话管理
-- [ ] 补全 `templates/` 下的 HTML 模板
+- [x] 实现 `index()` 查询并展示文章列表
+- [x] 实现 `post_detail()` 文章详情
+- [x] 实现 `new_post()` 表单处理和数据库插入
+- [x] 实现 `login()` / `logout()` 会话管理
+- [x] 补全 `templates/` 下的 HTML 模板
 - [ ] 扩展：文章编辑/删除、Markdown 支持
 
 #### 7. 用户注册登录 `02_intermediate/user_auth/`
