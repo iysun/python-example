@@ -1,17 +1,48 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head><meta charset="UTF-8"><title>博客首页</title></head>
-<body>
-  <h1>文章列表</h1>
-  <!-- TODO: 遍历 posts，展示标题、作者、时间，链接到详情页 -->
-  {% for post in posts %}
-  <article>
-    <h2><a href="{{ url_for('post_detail', post_id=post.id) }}">{{ post.title }}</a></h2>
-    <small>{{ post.created_at }}</small>
-  </article>
-  {% else %}
-  <p>还没有文章。</p>
-  {% endfor %}
-  <a href="{{ url_for('new_post') }}">写新文章</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}文章列表 - Web Blog{% endblock %}
+
+{% block content %}
+  <section class="page-heading">
+    <div>
+      <p class="eyebrow">Posts</p>
+      <h1>文章列表</h1>
+      <p class="lead">浏览最近发布的文章，记录想法、学习笔记和项目进展。</p>
+    </div>
+    {% if g.current_user %}
+      <a class="button" href="{{ url_for('new_post') }}">写新文章</a>
+    {% endif %}
+  </section>
+
+  <section class="grid">
+    {% for post in posts %}
+      <article class="post-card">
+        <h2>
+          <a href="{{ url_for('post_detail', post_id=post.id) }}">{{ post.title }}</a>
+        </h2>
+        <div class="meta">
+          {% if post.author %}
+            <span>作者：{{ post.author }}</span>
+          {% elif post.username %}
+            <span>作者：{{ post.username }}</span>
+          {% endif %}
+          <span>时间：{{ post.created_at }}</span>
+        </div>
+        {% if post.content %}
+          <p class="excerpt">{{ post.content[:120] }}{% if post.content|length > 120 %}...{% endif %}</p>
+        {% endif %}
+      </article>
+    {% else %}
+      <div class="empty-state">
+        <h2>还没有文章</h2>
+        <p class="empty-text">
+          {% if g.current_user %}
+            从第一篇文章开始。
+          {% else %}
+            登录后可以发布第一篇文章。
+          {% endif %}
+        </p>
+      </div>
+    {% endfor %}
+  </section>
+{% endblock %}

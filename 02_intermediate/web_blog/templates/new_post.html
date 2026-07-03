@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}写新文章 - Web Blog{% endblock %}
+
+{% block content %}
+  <section class="page-heading">
+    <div>
+      <p class="eyebrow">Compose</p>
+      <h1>写新文章</h1>
+      <p class="lead">标题保持清晰，正文支持自然换行展示。</p>
+    </div>
+  </section>
+
+  <div id="post-form" class="form-shell">
+    <form method="post" @submit="handleSubmit">
+      <div class="field">
+        <label for="title">标题</label>
+        <input
+          id="title"
+          name="title"
+          type="text"
+          maxlength="120"
+          v-model.trim="title"
+          autocomplete="off"
+          required
+        >
+        <p class="hint" :class="{ error: titleError }" v-text="titleHint"></p>
+      </div>
+
+      <div class="field">
+        <label for="content">正文</label>
+        <textarea
+          id="content"
+          name="content"
+          v-model.trim="content"
+          required
+        ></textarea>
+        <p class="hint" :class="{ error: contentError }" v-text="contentHint"></p>
+      </div>
+
+      <div class="form-actions">
+        <a class="button secondary" href="{{ url_for('index') }}">取消</a>
+        <button class="button" type="submit" :disabled="!canSubmit">发布文章</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          title: "",
+          content: "",
+          submitted: false
+        };
+      },
+      computed: {
+        titleError() {
+          return this.submitted && this.title.length === 0;
+        },
+        contentError() {
+          return this.submitted && this.content.length === 0;
+        },
+        titleHint() {
+          if (this.titleError) return "请输入文章标题";
+          return `${this.title.length}/120`;
+        },
+        contentHint() {
+          if (this.contentError) return "请输入文章正文";
+          return `${this.content.length} 字`;
+        },
+        canSubmit() {
+          return this.title.length > 0 && this.content.length > 0;
+        }
+      },
+      methods: {
+        handleSubmit(event) {
+          this.submitted = true;
+          if (!this.canSubmit) {
+            event.preventDefault();
+          }
+        }
+      }
+    }).mount("#post-form");
+  </script>
+{% endblock %}

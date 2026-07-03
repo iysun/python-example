@@ -1,4 +1,5 @@
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 
 DB_FILE = Path(__file__).parent / "blog.db"
@@ -7,17 +8,18 @@ DB_FILE = Path(__file__).parent / "blog.db"
 def get_db() -> sqlite3.Connection:
     conn = sqlite3.connect(DB_FILE)
     conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA foreign_keys = ON")
     return conn
 
 
 def init_db():
     """创建数据表（如果不存在）。"""
-    with get_db() as conn:
+    with closing(get_db()) as conn:
         conn.executescript("""
             CREATE TABLE IF NOT EXISTS users (
                 id       INTEGER PRIMARY KEY AUTOINCREMENT,
                 username TEXT UNIQUE NOT NULL,
-                password TEXT NOT NULL
+                password_hash TEXT NOT NULL
             );
             CREATE TABLE IF NOT EXISTS posts (
                 id         INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,3 +30,4 @@ def init_db():
                 FOREIGN KEY (author_id) REFERENCES users(id)
             );
         """)
+        conn.commit()

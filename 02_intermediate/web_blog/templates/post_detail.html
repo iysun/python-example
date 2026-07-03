@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - Web Blog{% endblock %}
+
+{% block content %}
+  <article class="article">
+    <p class="eyebrow">Article</p>
+    <h1>{{ post.title }}</h1>
+    <div class="meta">
+      {% if post.author %}
+        <span>作者：{{ post.author }}</span>
+      {% elif post.username %}
+        <span>作者：{{ post.username }}</span>
+      {% endif %}
+      <span>时间：{{ post.created_at }}</span>
+    </div>
+    <div class="article-content">{{ post.content }}</div>
+  </article>
+{% endblock %}

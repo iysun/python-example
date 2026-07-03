@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}注册 - Web Blog{% endblock %}
+
+{% block content %}
+  <section class="form-shell narrow" id="register-form">
+    <p class="eyebrow">Account</p>
+    <h1>注册</h1>
+    <form method="post" @submit="handleSubmit">
+      <div class="field">
+        <label for="username">用户名</label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          maxlength="32"
+          v-model.trim="username"
+          autocomplete="username"
+          required
+        >
+        <p class="hint" :class="{ error: usernameError }" v-text="usernameHint"></p>
+      </div>
+
+      <div class="field">
+        <label for="password">密码</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          minlength="6"
+          v-model="password"
+          autocomplete="new-password"
+          required
+        >
+        <p class="hint" :class="{ error: passwordError }" v-text="passwordHint"></p>
+      </div>
+
+      <button class="button full" type="submit" :disabled="!canSubmit">创建账号</button>
+    </form>
+    <p class="auth-switch">已有账号？<a href="{{ url_for('login') }}">去登录</a></p>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          username: "",
+          password: "",
+          submitted: false
+        };
+      },
+      computed: {
+        usernameError() {
+          return this.submitted && this.username.length < 3;
+        },
+        passwordError() {
+          return this.submitted && this.password.length < 6;
+        },
+        usernameHint() {
+          if (this.usernameError) return "用户名至少 3 个字符";
+          return "3-32 个字符";
+        },
+        passwordHint() {
+          if (this.passwordError) return "密码至少 6 个字符";
+          return "至少 6 个字符";
+        },
+        canSubmit() {
+          return this.username.length >= 3 && this.password.length >= 6;
+        }
+      },
+      methods: {
+        handleSubmit(event) {
+          this.submitted = true;
+          if (!this.canSubmit) {
+            event.preventDefault();
+          }
+        }
+      }
+    }).mount("#register-form");
+  </script>
+{% endblock %}
