@@ -1,0 +1,19 @@
+01_beginner/web_scraper/main.py
+  s_9f0f207c351a33::t_c89d88aed1576d 11,18,33-34,44-50,52-58,71-74,90,94-111
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "68d5ebcee81535013ce7eff636818fb614335a03",
+  "prompts": {},
+  "sessions": {
+    "s_9f0f207c351a33": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f25be-449b-74f0-a38f-ba27da885f60",
+        "model": "gpt-5.4"
+      },
+      "human_author": "mingzhou <mingzhou@tsign.cn>"
+    }
+  }
+}
