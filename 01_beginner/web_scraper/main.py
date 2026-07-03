@@ -3,6 +3,7 @@
 练习点：requests、BeautifulSoup、数据清洗、CSV 导出
 默认示例：爬取 quotes.toscrape.com（专为练习设计的合法爬取网站）
 """
+
 import csv
 import time
 from dataclasses import dataclass
@@ -27,27 +28,49 @@ class Quote:
 
 def fetch_page(url: str) -> BeautifulSoup:
     """请求页面并返回解析后的 BeautifulSoup 对象。"""
-    # TODO: 用 requests.get() 请求，检查状态码，返回 BeautifulSoup(response.text, "html.parser")
-    raise NotImplementedError
+    res = requests.get(url)
+
+    soup = BeautifulSoup(res.text, "html.parser")
+    return soup
 
 
 def parse_quotes(soup: BeautifulSoup) -> list[Quote]:
     """从页面解析出所有名言。"""
-    # TODO: 用 soup.select(".quote") 找到每个名言块
-    # TODO: 从每块中提取 text / author / tags
-    raise NotImplementedError
+    divs = soup.select(".quote")
+
+    quotes: list[Quote] = [None] * len(divs)
+    for i in range(len(divs)):
+        div = divs[i]
+        text = div.select("span.text")[0].get_text()
+        author = div.select("small.author")[0].get_text()
+        tags = div.select("a.tag")
+        quotes[i] = Quote(text=text, author=author, tags=[x.get_text() for x in tags])
+
+    return quotes
 
 
 def get_next_url(soup: BeautifulSoup) -> str | None:
     """返回下一页的 URL，没有则返回 None。"""
-    # TODO: 查找 .next a 标签，拼接 BASE_URL + href
-    raise NotImplementedError
+    next_ele = soup.select_one("li.next")
+    if not next_ele:
+        return None
+    a = next_ele.select_one("a[href]")
+    if not a:
+        return None
+    next_url = f"{BASE_URL}{a["href"]}"
+
+    return next_url
 
 
 def save_to_csv(quotes: list[Quote]) -> None:
     """将名言列表保存为 CSV 文件。"""
-    # TODO: 用 csv.writer 写入表头和每行数据
-    raise NotImplementedError
+    with open(OUTPUT_FILE, mode='w', encoding='utf-8', newline='') as file:
+        csv_writer = csv.writer(file)
+        
+        csv_writer.writerow(['Text', 'Author', 'Tags'])
+
+        for quote in quotes:
+            csv_writer.writerow(quote.to_row())
 
 
 def main(max_pages: int = 3):
