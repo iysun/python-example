@@ -1,0 +1,44 @@
+02_intermediate/web_blog/templates/post_detail.html
+  s_3c2f2f922a8350::t_0cc453f9863e19 1-19
+02_intermediate/web_blog/templates/index.html
+  s_3c2f2f922a8350::t_0cc453f9863e19 1-11,13-38,40-48
+  s_3c2f2f922a8350::t_ec080cdcc7e82b 12,39
+02_intermediate/web_blog/app.py
+  s_3c2f2f922a8350::t_97817a1a785b98 6-8,12-13,17-41,70,81-83,90-91,99-102,117-122,124-126,133-147,152-162,167-180,191
+  s_3c2f2f922a8350::t_b8861c70c362dc 47-51,53-54
+  s_3c2f2f922a8350::t_ce26b63359c60c 132
+  s_3c2f2f922a8350::t_01d4bcba950758 14,148-151
+  s_3c2f2f922a8350::t_ec080cdcc7e82b 9-11,45-46,52,55-69,71-80,87,96,107,123
+02_intermediate/web_blog/templates/base.html
+  s_3c2f2f922a8350::t_0cc453f9863e19 1-379,381-406
+  s_3c2f2f922a8350::t_ec080cdcc7e82b 380
+02_intermediate/web_blog/templates/register.html
+  s_3c2f2f922a8350::t_0cc453f9863e19 1-83
+02_intermediate/web_blog/templates/new_post.html
+  s_3c2f2f922a8350::t_0cc453f9863e19 1-88
+02_intermediate/web_blog/init_db.py
+  s_3c2f2f922a8350::t_50f000b032b63c 2-17
+  s_3c2f2f922a8350::t_01d4bcba950758 1
+02_intermediate/web_blog/templates/login.html
+  s_3c2f2f922a8350::t_0cc453f9863e19 1-79
+02_intermediate/web_blog/database.py
+  s_3c2f2f922a8350::t_97817a1a785b98 2,11,17,22,33
+02_intermediate/web_blog/templates/404.html
+  s_3c2f2f922a8350::t_97817a1a785b98 1-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "8f4d70b01244787af6f0334c1017a8ad522ca353",
+  "prompts": {},
+  "sessions": {
+    "s_3c2f2f922a8350": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f2704-5abe-7bf0-aa02-7843c53a4e75",
+        "model": "gpt-5.5"
+      },
+      "human_author": "mingzhou <mingzhou@tsign.cn>"
+    }
+  }
+}
